@@ -71,7 +71,7 @@ if( empty($_POST['startPoint']) || empty($_POST['endPoint'])|| empty($_POST['ite
 
 }
 
-if(is_numeric($_POST['startPoint']) && is_numeric($_POST['endPoint']) && is_numeric($_POST['iterations']) && is_numeric($_POST['multiple']))
+if(is_numeric($_POST['startPoint']) && is_numeric($_POST['endPoint']) && is_numeric($_POST['iterations']))
 {}
 else
 {
@@ -159,7 +159,19 @@ echo "Suma nr multiple cu 5 este: $suma <br/>";
 //apelare functie verificare
 verificare($data);
 /*-----------------------------------------------*/
+if( empty($_POST['multiple'])){
+    echo 'Completeaza campul numar multiplu!!';
+    exit();
 
+}
+
+if(is_numeric($_POST['multiple']))
+{}
+else
+{
+    echo 'Completeaza campul cu valori numerice!! :)';
+    exit();
+}
 //functie pentru modul- numarare de elemente
 function modC($data, $m){
     $nr=0;
@@ -213,7 +225,7 @@ if(modV($data,$m)==true)
     echo "exista in vector valori multiple cu ".$m;
 else
     echo "nu exista in vector valori multiple cu ".$m;
-/*-----------------------------------------------*/
+
 
 
 
