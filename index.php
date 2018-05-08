@@ -11,10 +11,7 @@
     <div class="wrapper">
         <div class="line center bold">
             <h1>PHPentaStagiu 2018</h1>
-                <h2>M01.03 <span class="fun"> The Fun One</span></h2>
-                <h3>
-                <a href="https://docs.google.com/presentation/d/19YulX3DUaNkP9aT8-jX9g4mPdwY6-F-rt8BOv8xQ1VA/" target="_blank">M01.02</a>
-                </h3>
+                <h2>M02.01 OOP</h2>
             </div>
             <div class="line">
             <ol class="ml20">
@@ -52,37 +49,23 @@
         </div>
     </body>
 </html>
+
 <?php
+
+include 'Divizor.php';
+include 'Validare.php';
 if (!$_POST) {
     exit;
 }
-echo "<pre>";
 
+
+echo "<pre>";
 print_r($_POST);
 
 $start=$_POST['startPoint'];
 $finish=$_POST['endPoint'];
 $it=$_POST['iterations'];
 $m=$_POST['multiple'];
-
-if( empty($_POST['startPoint']) || empty($_POST['endPoint'])|| empty($_POST['iterations'])){
-    echo 'Completeaza toate campurile!!';
-    exit();
-
-}
-
-if(is_numeric($_POST['startPoint']) && is_numeric($_POST['endPoint']) && is_numeric($_POST['iterations']))
-{}
-else
-{
-    echo 'Completeaza campurile cu valori numerice!! :)';
-    exit();
-}
-if(($_POST['endPoint'])-($_POST['startPoint']) <= ($_POST['iterations'])){
-    echo 'Alege un numar mai mic de elemente!!';
-    exit();
-}
-
 $data= functie ($_POST['startPoint'],$_POST['endPoint'],$_POST['iterations']);
 
 // generare array
@@ -93,141 +76,16 @@ function functie($start, $it, $finish){
     return $array;
 }
 
-//afisare vector
 var_dump($data);
-//declarare vector
-$arr=[];
-/*-------------------------------*/
+$var1 = new Divizor();
+echo "-> numerele divizibile cu 3 din vector".$var1->divizor($data, 3);
+echo "<br/>";
+echo "-> numarul de elemente divizibile cu 4 din vector".$var1->numarare($data, 4) . "<br/>";
+echo "-> suma numerelor divizibile cu 5 din vector ".$var1->suma($data,5)."<br/>";
 
-//afisare in vector valorile care sunt multiplu de 3
-foreach ($data as $value)
-{
-    if($value%3==0)
-    {
-        $arr[]=$value;
-    }
-}
-var_dump($arr);
-
-
-/*--------------------------------*/
-
-// numar de valori- multiplu de 4
-$nr=0;
-foreach ($data as $value)
-{
-    if($value%4==0){
-        $nr++;
-    }
-}
-echo "Nr multiplu de 4: $nr<br/>";
-
-/*------------------------------------*/
-
- // suma numerelor multiplu de 5
-$suma=0;
-foreach ($data as $value)
-{
-    if($value%5==0){
-        $suma+=$value;
-    }
-}
-echo "Suma numerelor multiple cu 5 este: $suma <br/>";
-
-/*--------------------------------------------*/
-
-function verificare($data){
-$nr=0;
-$suma=0;
- foreach ($data as $value){
-    if($value%3==0)
-    {
-        $arr[]=$value;
-    }
-    if($value%4==0){
-        $nr++;
-    }
-    if($value%5==0){
-        $suma+=$value;
-    }
-}
-
-var_dump($arr);
-echo "Nr multipul de 4 este: $nr<br/>";
-echo "Suma nr multiple cu 5 este: $suma <br/>";
-}
-//apelare functie verificare
-verificare($data);
-/*-----------------------------------------------*/
-if( empty($_POST['multiple'])){
-    echo 'Completeaza campul numar multiplu!!';
-    exit();
-
-}
-
-if(is_numeric($_POST['multiple']))
-{}
-else
-{
-    echo 'Completeaza campul cu valori numerice!! :)';
-    exit();
-}
-//functie pentru modul- numarare de elemente
-function modC($data, $m){
-    $nr=0;
-    foreach ($data as $value){
-    if($value% $m ==0)
-      $nr++;
-}
-echo "Numarul de elemente multiple cu  ". $m . "  este egal cu: $nr</br>";
-}
-//apelare functie modC
-modC($data,$m);
-
-/*-----------------------------------------------*/
-
-//functie pentru modul- suma elementelor
-function modS($data, $m){
-    $suma=0;
-    foreach ($data as $value){
-    if($value%$m==0)
-      $suma+=$value;
-}
-echo "Suma elementelor multiple cu  ". $m . "  este egala cu: $suma</br>";
-}
-//apelare functie mod
-modS($data,$m);
-
-/*-----------------------------------------------*/
-
-//functie pentru modul- afisarea de elementelor
-function modA($data, $m){
-    $vec=[];
-    foreach ($data as $value){
-        if($value%$m==0)
-            $vec[]=$value;
-    }
-    echo "Elememntele multiple cu ". $m."  sunt urmatoarele:</br> ";
-    var_dump($vec);
-}
-//apelare functie mod
-modA($data, $m);
-
-/*-----------------------------------------------*/
-
-//functie de verificare mod
-function modV($data, $m){
-    foreach ($data as $value){
-        if($value%$m ==0)
-            return true;
-}}
-if(modV($data,$m)==true)
-    echo "exista in vector valori multiple cu ".$m;
-else
-    echo "nu exista in vector valori multiple cu ".$m;
-
-
-
-
-
-
+var_dump($data);
+$var1 = new Divizor();
+echo "-> numerele divizibile cu ".$m." din vector ".$var1->divizor($data, $m) . "<br/>";
+echo "-> numarul numerele divizibile cu ".$m." din vector".$var1->numarare($data, $m) . "<br/>";
+echo "-> suma numerelor divizibile cu ".$m." din vector ".$var1->suma($data,$m)."<br/>";
+?>
